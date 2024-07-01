@@ -18,7 +18,7 @@ This automation is primarily based on Bash scripts; therefore, an Ubuntu or simi
 2. Docker
 3. JMeter
 
-## Repo Contents:
+## Repo Contents
 
 This repository contains or should contain the following files:
 
