@@ -1,0 +1,32 @@
+stages:
+  - init
+  - test
+
+variables:
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_CERTDIR: "/certs"
+
+services:
+  - docker:dind
+
+before_script:
+  - apk add --no-cache bash docker
+  - chmod +x DPTO_script.sh
+
+init:
+  stage: init
+  script:
+    - ./DPTO_script.sh INIT
+  tags:
+    - docker
+  only:
+    - main
+
+test:
+  stage: test
+  script:
+    - ./DPTO_script.sh TEST 2 masterScript.jmx
+  tags:
+    - docker
+  only:
+    - main
